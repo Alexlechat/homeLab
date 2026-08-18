@@ -1,4 +1,4 @@
-# 🛡️ SentinelLab
+# SentinelLab
 
 > A Blue Team home lab for detection engineering and incident response — SOC Tier 1
 
@@ -9,7 +9,7 @@
 
 ---
 
-## 🎯 Purpose
+## Purpose
 
 SentinelLab is a personal lab built to reproduce the day-to-day work of a **Tier 1 SOC analyst**: log collection and correlation, intrusion detection, alert investigation, and incident response.
 
@@ -19,7 +19,7 @@ The project is part of a career change into cybersecurity (École 42 Lyon, Franc
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
                         Router / Gateway — 192.168.1.254
@@ -42,9 +42,9 @@ The project is part of a career change into cybersecurity (École 42 Lyon, Franc
           │   │  4 vCPU / 8 GB RAM / 80 GB       │     │
           │   └──────────────────────────────────┘     │
           │                                            │
-          │   [ VM 101 — Windows 10 (endpoint)  ] 🔜   │
-          │   [ VM 102 — Kali Linux (attacker)  ] 🔜   │
-          │   [ VM 103 — pfSense (firewall)     ] 🔜   │
+          │   [ VM 101 — Windows 10 (endpoint)  ]      │
+          │   [ VM 102 — Kali Linux (attacker)  ]      │
+          │   [ VM 103 — pfSense (firewall)     ]      │
           └────────────────────────────────────────────┘
 ```
 
@@ -61,21 +61,21 @@ The project is part of a career change into cybersecurity (École 42 Lyon, Franc
 
 ---
 
-## 🧰 Stack
+## Stack
 
 | Layer | Tool | Status |
 |---|---|---|
-| Hypervisor | Proxmox VE 9.2 | ✅ Deployed |
-| SIEM | Wazuh 4.9 (Manager, Indexer, Dashboard) | ✅ Deployed |
-| Server OS | Ubuntu Server 24.04 LTS | ✅ Deployed |
-| Windows endpoint | Windows 10 + Sysmon + Wazuh agent | 🔜 Planned |
-| Attack simulation | Kali Linux (Nmap, Hydra, Metasploit) | 🔜 Planned |
-| Firewall / segmentation | pfSense | 🔜 Planned |
-| Case management | TheHive | 🔜 Planned |
+| Hypervisor | Proxmox VE 9.2 | Deployed |
+| SIEM | Wazuh 4.9 (Manager, Indexer, Dashboard) | Deployed |
+| Server OS | Ubuntu Server 24.04 LTS | Deployed |
+| Windows endpoint | Windows 10 + Sysmon + Wazuh agent | Planned |
+| Attack simulation | Kali Linux (Nmap, Hydra, Metasploit) | Planned |
+| Firewall / segmentation | pfSense | Planned |
+| Case management | TheHive | Planned |
 
 ---
 
-## 📂 Repository layout
+## Repository layout
 
 ```
 SentinelLab/
@@ -103,28 +103,28 @@ SentinelLab/
 
 ---
 
-## 🔴 Detection scenarios
+## Detection scenarios
 
 Every scenario follows the same structure: **context → attack execution → logs generated → Wazuh rule triggered → investigation → response**.
 
-### 1. SSH brute force — 🔜 In preparation
+### 1. SSH brute force — *in preparation*
 Dictionary attack from Kali against the Ubuntu server. Goal: trigger Wazuh rule 5763, analyse `auth.log`, document the investigation workflow, and test active response (IP blocking).
 
-### 2. Network reconnaissance — 🔜 In preparation
+### 2. Network reconnaissance — *in preparation*
 Nmap sweep from a compromised host. Goal: detect internal reconnaissance, identify the source, and assess scope.
 
-### 3. Windows persistence — 🔜 In preparation
+### 3. Windows persistence — *in preparation*
 Malicious scheduled task created on the Windows endpoint. Goal: Sysmon + Wazuh correlation, MITRE ATT&CK mapping (T1053).
 
 ---
 
-## 📋 Response playbooks
+## Response playbooks
 
 Playbooks follow the **PICERL** model (Preparation, Identification, Containment, Eradication, Recovery, Lessons Learned), aligned with NIST SP 800-61.
 
 ---
 
-## 🔧 Issues encountered & resolutions
+## Issues encountered & resolutions
 
 This section documents the real problems hit during deployment — usually where the most useful learning happens.
 
@@ -154,7 +154,7 @@ Then connect to `vnc://localhost:5901` with any VNC client.
 
 ---
 
-## 🚀 Reproducing this lab
+## Reproducing this lab
 
 ### Requirements
 - Host machine: 4 cores minimum, 16 GB RAM (32 GB recommended)
@@ -184,32 +184,3 @@ The script installs the indexer, server, and dashboard. Generated credentials ar
 Dashboard available at `https://<server-ip>`.
 
 ---
-
-## 📚 Training in parallel
-
-| Platform | Path | Status |
-|---|---|---|
-| TryHackMe | SOC Level 1 | 🔄 In progress |
-| LetsDefend | SOC Analyst Path | 🔜 Planned |
-| CyberDefenders | Blue Team Labs | 🔜 Planned |
-| Security Blue Team | **BTL1** (certification) | 🎯 Goal |
-
----
-
-## 🎓 Background
-
-Career change into cybersecurity through **École 42 Lyon**. SentinelLab is the practical foundation of my hands-on skill building and the centrepiece of my technical portfolio, in support of a search for a **Blue Team / SOC Tier 1 internship**.
-
-📍 Lyon area, France · 🔗 [LinkedIn](https://linkedin.com/in/YOUR-PROFILE)
-
----
-
-## 🔒 Security note
-
-This repository documents an architecture, never secrets. No passwords, private keys, or credentials are included — the IP addresses shown belong to an isolated private network (RFC 1918).
-
----
-
-## 📄 License
-
-MIT — feel free to reuse any of this to build your own lab.
